@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Beer, Clock, CheckCircle } from 'lucide-react';
 import EntryList from './EntryList';
+import ProgressBar from './ProgressBar';
+import StatusBox from './StatusBox';
 
 const BeerTracker = () => {
   const [entries, setEntries] = useState([]);
@@ -154,46 +156,14 @@ const BeerTracker = () => {
         </div>
 
         {/* Status */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="text-sm text-gray-600">Total (36h)</p>
-              <p className={`text-3xl font-bold ${isOverLimit ? 'text-red-600' : 'text-gray-800'}`}>
-                {total.toFixed(0)} ml
-              </p>
-            </div>
-            {!isOverLimit && total < 700 ? (
-              <CheckCircle className="w-12 h-12 text-green-500" />
-            ) : isOverLimit ? (
-              <span className="text-4xl">⚠️</span>
-            ) : null}
-          </div>
-
-          {/* Barra de progresso */}
-          <div className="mb-4">
-            <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
-              <div
-                className={`h-4 transition-all duration-500 ${
-                  isOverLimit ? 'bg-red-500' : 'bg-amber-500'
-                }`}
-                style={{ width: `${percentage}%` }}
-              />
-            </div>
-            <p className="text-xs text-gray-600 mt-1 text-right">
-              {percentage.toFixed(1)}% do limite
-            </p>
-          </div>
-
-          {/* Tempo restante */}
-          {oldestEntry && (
-            <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-              <Clock className="w-4 h-4" />
-              <span>
-                Janela reseta em: <strong>{formatTimeRemaining(oldestEntry.timestamp)}</strong>
-              </span>
-            </div>
-          )}
-        </div>
+        <StatusBox
+          total={total}
+          isOverLimit={isOverLimit}
+          percentage={percentage}
+          oldestEntry={oldestEntry}
+          formatTimeRemaining={formatTimeRemaining}
+        />
+        <ProgressBar percentage={percentage} isOverLimit={isOverLimit} />
 
         {/* Histórico */}
         <EntryList
