@@ -176,18 +176,18 @@ const BeerTracker = () => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Quantidade (ml)
           </label>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-hidden">
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && addEntry()}
               placeholder="350"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-0 flex-1 min-w-0 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             />
             <button
               onClick={addEntry}
-              className="px-6 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              className="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium whitespace-nowrap"
             >
               Adicionar
             </button>
