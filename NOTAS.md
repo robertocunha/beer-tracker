@@ -1,3 +1,25 @@
+(Adicione novas anotações sempre que houver decisões, dúvidas ou aprendizados relevantes!)
+
+---
+
+### 14/12/2025 — Configuração de PWA e Ícones
+
+**Resumo:**
+- Adicionado o arquivo `manifest.json` para transformar o app em PWA.
+- Incluídas as tags necessárias no `<head>` do `index.html` para manifest, theme-color e modo standalone.
+- Criados ícones simples (192x192 e 512x512) via terminal usando ImageMagick, para uso como ícones do app e favicon.
+- O favicon do Vite foi substituído pelo ícone 192x192.
+- Testada a presença do botão de instalação PWA no navegador desktop.
+- Decisão: adiar o teste de instalação para depois do deploy, garantindo que o atalho criado aponte para o endereço público do app.
+
+**Comando para criar ícones (exemplo):**
+```bash
+convert -size 192x192 canvas:yellow -fill black -draw "circle 96,96 96,40" public/icon-192.png
+convert -size 512x512 canvas:yellow -fill black -draw "circle 256,256 256,100" public/icon-512.png
+```
+
+**Observação:**
+O conceito de instalação PWA vale tanto para mobile quanto para desktop. O atalho criado localmente aponta para o localhost; após o deploy, o atalho apontará para o domínio público.
 
 ---
 
