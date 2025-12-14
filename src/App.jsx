@@ -1,13 +1,18 @@
+import AboutSection from './AboutSection';
 import React, { useState, useEffect } from 'react';
 import { Beer, Clock, CheckCircle } from 'lucide-react';
 import EntryList from './EntryList';
 import ProgressBar from './ProgressBar';
 import StatusBox from './StatusBox';
+import HamburgerButton from './HamburgerButton';
+import SideDrawer from './SideDrawer';
 
 const BeerTracker = () => {
   const [entries, setEntries] = useState([]);
   const [amount, setAmount] = useState('');
   const [currentTime, setCurrentTime] = useState(Date.now());
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerContent, setDrawerContent] = useState('menu'); // 'menu' ou 'about'
 
   // Carrega entradas do localStorage ao iniciar
   useEffect(() => {
@@ -122,7 +127,41 @@ const BeerTracker = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 p-4">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-md mx-auto relative">
+        {/* Botão hambúrguer */}
+        <div className="absolute left-0 top-4">
+          <HamburgerButton onClick={() => setDrawerOpen(true)} />
+        </div>
+
+        {/* Drawer lateral */}
+        <SideDrawer
+          open={drawerOpen}
+          onClose={() => { setDrawerOpen(false); setDrawerContent('menu'); }}
+          wide={drawerContent === 'about'}
+        >
+          {drawerContent === 'menu' ? (
+            <ul className="space-y-4">
+              <li>
+                <button
+                  className="block text-lg text-amber-700 hover:underline w-full text-left"
+                  onClick={() => setDrawerContent('about')}
+                >
+                  Sobre
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <div>
+              <button
+                className="mb-4 text-sm text-amber-700 hover:underline"
+                onClick={() => setDrawerContent('menu')}
+              >
+                ← Voltar
+              </button>
+              <AboutSection />
+            </div>
+          )}
+        </SideDrawer>
         {/* Header */}
         <div className="text-center mb-6 pt-4">
           <div className="flex items-center justify-center gap-2 mb-2">
