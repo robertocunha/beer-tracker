@@ -18,7 +18,8 @@ const SideDrawer = ({ open, onClose, children, wide = false }) => {
       />
       {/* Drawer */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${wide ? 'w-[90vw] max-w-xl' : 'w-64'}`}
+        className={`fixed top-0 left-0 h-full bg-white shadow-lg z-50 transform transition-transform duration-300 ${open ? 'translate-x-0' : '-translate-x-full'} ${wide ? 'w-full max-w-xl' : 'w-64'}`}
+        style={{ maxWidth: '100vw' }}
         aria-label="Menu lateral"
       >
         <button
