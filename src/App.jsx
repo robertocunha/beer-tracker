@@ -127,7 +127,7 @@ const BeerTracker = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 p-4 overflow-x-hidden">
-      <div className="w-full max-w-md md:mx-auto relative" style={{ maxWidth: '100vw' }}>
+      <div className="w-full md:max-w-md md:mx-auto relative">
         {/* Botão hambúrguer */}
         <div className="absolute left-0 top-4">
           <HamburgerButton onClick={() => setDrawerOpen(true)} />
