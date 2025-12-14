@@ -1,3 +1,16 @@
+---
+
+### 14/12/2025 — Deploy na Vercel
+
+O deploy do app foi realizado na Vercel de forma simples e rápida:
+- Login na Vercel
+- Criação do repositório remoto no GitHub via CLI
+- Importação do projeto na Vercel e deploy automático
+
+**URL pública:** https://beer-tracker-tau.vercel.app/
+
+Após o deploy, qualquer push no GitHub atualiza automaticamente o app online.
+
 
 # NOTAS.md
 
